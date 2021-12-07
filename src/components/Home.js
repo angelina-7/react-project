@@ -9,7 +9,7 @@ export default function Home() {
                             <ul id="flexiselDemo1">
                                 <li>
                                     <div className="banner-info1-grid">
-                                        <img src="images/1.png" alt=" " className="img-responsive" />
+                                        <img src="images/me.png" alt=" " className="img-responsive" />
                                         <h3>denouncing pleasure</h3>
                                         <p>Duis aute irure dolor in reprehenderit in voluptate velit
                                             esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -17,7 +17,7 @@ export default function Home() {
                                 </li>
                                 <li>
                                     <div className="banner-info1-grid">
-                                        <img src="images/2.png" alt=" " className="img-responsive" />
+                                        <img src="images/me.png" alt=" " className="img-responsive" />
                                         <h3>denouncing pleasure</h3>
                                         <p>Duis aute irure dolor in reprehenderit in voluptate velit
                                             esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -25,7 +25,7 @@ export default function Home() {
                                 </li>
                                 <li>
                                     <div className="banner-info1-grid">
-                                        <img src="images/3.png" alt=" " className="img-responsive" />
+                                        <img src="images/me.png" alt=" " className="img-responsive" />
                                         <h3>denouncing pleasure</h3>
                                         <p>Duis aute irure dolor in reprehenderit in voluptate velit
                                             esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -56,7 +56,7 @@ export default function Home() {
                         </div>
                         <div className="col-md-7 banner-bottom-grid wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
                             <div className="banner-bottom-grid1">
-                                <img src="images/1.jpg" alt=" " className="img-responsive" />
+                                <img src="images/me.jpg" alt=" " className="img-responsive" />
                                 <div className="banner-bottom-grid-pos">
                                     <div className="progress">
                                         <div className="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" >
@@ -81,7 +81,7 @@ export default function Home() {
                     <div className="banner-bottom-grids">
                         <div className="col-md-6 banner-bottom-grid-1 wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
                             <div className="banner-bottom-grid-11">
-                                <img src="images/2.jpg" alt=" " className="img-responsive" />
+                                <img src="images/me.jpg" alt=" " className="img-responsive" />
                                 <div className="banner-bottom-grid-11-pos">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                         sed do eiusmod tempor incididunt ut labore et dolore magna
