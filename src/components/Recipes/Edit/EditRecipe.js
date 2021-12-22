@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-import * as recipeService from '../services/recipeService';
+import * as recipeService from '../../../services/recipeService';
 
 export default function EditRecipe() {
     let [recipe, setRecipe] = useState([]);

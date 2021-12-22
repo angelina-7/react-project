@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-import { useAuthContext } from '../contexts/AuthContext';
-import * as recipeService from '../services/recipeService';
+import { useAuthContext } from '../../../contexts/AuthContext';
+import * as recipeService from '../../../services/recipeService';
 
 export default function RecipeDetails() {
     let navigate = useNavigate();

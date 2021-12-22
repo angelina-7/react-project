@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import * as recipeService from '../services/recipeService';
+import * as recipeService from '../../../services/recipeService';
 import HomeRecipeCard from "./HomeRecipeCard";
 
 export default function Home() {
