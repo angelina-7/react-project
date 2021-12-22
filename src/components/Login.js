@@ -5,7 +5,7 @@ import { useAuthContext } from '../contexts/AuthContext';
 import * as authService from '../services/authService'
 
 export default function Login() {
-    const {login} = useAuthContext();
+    const { login } = useAuthContext();
     // const { addNotification } = useNotificationContext();
     const navigate = useNavigate();
 
@@ -32,7 +32,10 @@ export default function Login() {
     return (
         <div className="contact">
             <div className="container">
-                <div className="col-md-8 contact-left wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="300ms">
+                {/* <div class="alert alert-danger" role="alert">
+                    Error
+                </div> */}
+                <div className="col-md-8 contact-left">
                     <h4>LogIn</h4>
                     <form onSubmit={onLoginHandler} method="POST">
                         <input type="email" id="email" name="email" placeholder="Email" />
