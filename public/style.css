@@ -139,6 +139,19 @@ nav.cl-effect-13 a {
     margin: 5px;
     box-sizing: content-box;
 }
+.icon-link.round {
+    border-radius: 50%;
+}
+.icon-link.like {
+    background: url(./images/love.png) no-repeat -4px -1px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #d2d0cf;
+}
+.icon-link.like:hover{
+	background:url(./images/love.png) no-repeat -41px -2px #fff;
+	border: 2px solid #fff;
+}
 /*-- //header --*/
 /*-- banner --*/
 .banner{
@@ -373,7 +386,7 @@ nav.cl-effect-13 a {
 /*-- //banner-bottom --*/
 /*-- newsletter --*/
 .banner1{
-	background:url(./images/1.jpg) no-repeat 0px 0px;
+	background:url(./images/bannerUser.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
