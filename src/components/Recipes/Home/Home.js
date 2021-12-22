@@ -4,23 +4,7 @@ import { Link } from "react-router-dom";
 import * as recipeService from '../../../services/recipeService';
 import HomeRecipeCard from "./HomeRecipeCard";
 
-export default function Home() {
-    let [recipes, setRecipes] = useState([]);
-
-    useEffect(() => {
-        recipeService.getAll()
-            .then(recipes => {
-                if (recipes) {
-                    setRecipes(recipes);
-                }
-            })
-            .catch(err => {
-                //todo notify
-                console.log(err);
-            })
-    }, []);
-
-
+export default function Home({recipes}) {
     return (
         <>
             <div className="banner">

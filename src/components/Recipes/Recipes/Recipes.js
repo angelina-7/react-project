@@ -4,22 +4,7 @@ import { Link } from "react-router-dom";
 import * as recipeService from '../../../services/recipeService';
 import RecipeCard from "./RecipeCard";
 
-export default function Recipes() {
-    let [recipes, setRecipes] = useState([]);
-
-    useEffect(() => {
-        recipeService.getAll()
-            .then(recipes => {
-                if (recipes) {
-                    setRecipes(recipes);
-                }
-            })
-            .catch(err => {
-                //todo notify
-                console.log(err);
-            })
-    }, []);
-
+export default function Recipes({recipes}) {
     return (
         <div className="events">
             <div className="container">

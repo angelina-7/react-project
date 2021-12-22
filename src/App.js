@@ -4,10 +4,11 @@ import { AuthProvider } from './contexts/AuthContext';
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./components/Recipes/Home/Home";
+import RecipesRoot from "./components/Recipes/RecipesRoot";
 import Login from "./components/User/Login";
 import Register from './components/User/Register';
 import Recipes from './components/Recipes/Recipes/Recipes';
+import Home from './components/Recipes/Home/Home';
 import RecipeDetails from './components/Recipes/Details/RecipeDetails';
 import Logout from './components/User/Logout';
 import CreateRecipe from './components/Recipes/Create/CreateRecipe';
@@ -22,8 +23,8 @@ function App() {
 
                 <main>
                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/recipes" element={<Recipes />} />
+                        <Route path="/*" element={<RecipesRoot />} />
+                        {/* <Route path="/recipes" element={<RecipesRoot />} /> */}
 
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
