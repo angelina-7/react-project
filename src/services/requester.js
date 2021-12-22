@@ -14,7 +14,7 @@ function request(method, url, data) {
         };
     }
 
-    if (user) {
+    if (user.email != "") {
         options.headers = {
             ...(options.headers),
             'X-Authorization': user.accessToken

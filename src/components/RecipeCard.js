@@ -1,23 +1,25 @@
+import { Link } from "react-router-dom";
+
 export default function RecipeCard({
-    _id,
-    _createdOn,
-    imageUrl,
-    title,
-    info,
-    description,
-    
+    children
 }) {
+    let date = parseDate(children._createdOn);
+
     return (
         <div className="col-md-4 event-grid">
-            <p class="dte">{_createdOn}</p>
-            <img src={imageUrl} alt=" " className="img-responsive" />
+            <p class="dte">{date}</p>
+            <img src={children.imageUrl} alt=" " className="img-responsive" />
             <div className="nobis">
-                <Link to={`/recipes/{_id}/details`}>{title}<span>{info}</span></Link>
+                <Link to={`/recipes/{_id}/details`}>{children.title}<span>{children.info}</span></Link>
             </div>
-            <p className="quod">{description}</p>
+            <p className="quod">{children.description}</p>
             <div className="more">
-                <Link to={`/recipes/${_id}/details`} className="hvr-curl-bottom-right">Read More</Link>
+                <Link to={`/recipes/${children._id}/details`} className="hvr-curl-bottom-right">Read More</Link>
             </div>
         </div>
     );
+}
+
+const parseDate = (date) => {
+    return new Date(date).toString().substring(4,15);
 }

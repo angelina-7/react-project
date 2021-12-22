@@ -1,6 +1,27 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import * as recipeService from '../services/recipeService';
+import HomeRecipeCard from "./HomeRecipeCard";
+
 export default function Home() {
+    let [recipes, setRecipes] = useState([]);
+
+    useEffect(() => {
+        recipeService.getAll()
+            .then(recipes => {
+                if (recipes) {
+                    setRecipes(recipes);
+                    console.log(recipes);
+                }
+            })
+            .catch(err => {
+                //todo notify
+                console.log(err);
+            })
+    }, []);
+
+
     return (
         <>
             <div className="banner">
@@ -12,30 +33,7 @@ export default function Home() {
                         </h1>
                         <div className="banner-info1" >
                             <ul className="banner-info1-list">
-                                <li>
-                                    <div className="banner-info1-grid">
-                                        <img src="images/2.jpg" alt=" " className="img-responsive" />
-                                        <h3>denouncing pleasure</h3>
-                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit
-                                            esse cillum dolore eu fugiat nulla pariatur.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="banner-info1-grid">
-                                        <img src="images/2.jpg" alt=" " className="img-responsive" />
-                                        <h3>denouncing pleasure</h3>
-                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit
-                                            esse cillum dolore eu fugiat nulla pariatur.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="banner-info1-grid">
-                                        <img src="images/2.jpg" alt=" " className="img-responsive" />
-                                        <h3>denouncing pleasure</h3>
-                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit
-                                            esse cillum dolore eu fugiat nulla pariatur.</p>
-                                    </div>
-                                </li>
+                                {recipes.slice(0,3).map(x => <HomeRecipeCard key={x._id} _id={x._id} imageUrl={x.imageUrl} title={x.title} />)}
                             </ul>
 
                             <div className="more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">

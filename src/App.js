@@ -11,6 +11,7 @@ import Recipes from './components/Recipes';
 import RecipeDetails from './components/RecipeDetails';
 import Logout from './components/Logout';
 import CreateRecipe from './components/CreateRecipe';
+import UserProfile from './components/UserProfile';
 
 function App() {
     return (
@@ -21,19 +22,20 @@ function App() {
                 <main>
                     <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/recipes" element={<Recipes />} />
+
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
+
+                        <Route path="/user/:userId" element={<UserProfile />} />
                         <Route path="/logout" element={<Logout />} />
-                        <Route path="/recipes" element={<Recipes />} />
                         <Route path="/recipes/create" element={<CreateRecipe />} />
-                        <Route path="/recipes/:id/details" element={<RecipeDetails 
-                        title="hi" 
-                        imageUrl="" 
-                        info="some info" 
-                        description="imalo edno vreme edna musaka" 
-                        ingredients="kartofi, chorapi, kiselo zele" 
-                        instructions="pii, qj i se veseli"
-                        />} />
+                        <Route path="/recipes/:id/details" element={<RecipeDetails />} />
+                        <Route path="/recipes/:id/like" element={<RecipeDetails />} />
+
+                        <Route path="/recipes/:id/edit" element={<RecipeDetails />} />
+                        <Route path="/recipes/:id/delete" element={<RecipeDetails />} />
+
                     </Routes>
                 </main>
 
