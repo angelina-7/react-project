@@ -707,6 +707,7 @@ section#tables  p {
   font-weight: 300 !important;
 }
 .label {
+  margin: 5px;
   padding: 4px 6px;
   border: none;
   text-shadow: none;

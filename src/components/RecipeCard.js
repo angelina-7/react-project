@@ -10,7 +10,7 @@ export default function RecipeCard({
             <p class="dte">{date}</p>
             <img src={children.imageUrl} alt=" " className="img-responsive" />
             <div className="nobis">
-                <Link to={`/recipes/{_id}/details`}>{children.title}<span>{children.info}</span></Link>
+                <Link to={`/recipes/${children._id}/details`}>{children.title}<span>{children.info}</span></Link>
             </div>
             <p className="quod">{children.description}</p>
             <div className="more">

@@ -12,7 +12,6 @@ export default function Recipes() {
             .then(recipes => {
                 if (recipes) {
                     setRecipes(recipes);
-                    console.log(recipes);
                 }
             })
             .catch(err => {
