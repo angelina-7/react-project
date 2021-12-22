@@ -507,8 +507,8 @@ nav.cl-effect-13 a {
 	outline: none;
 }
 .contact-left input[type="password"],.contact-left input[type="email"]{
-	width: 32.7%;
-	float: left;
+	width: 29.8%;
+
 }
 .contact-left textarea{
 	min-height: 200px;
@@ -522,7 +522,7 @@ nav.cl-effect-13 a {
     color: #fff;
     font-size: 16px;
     padding: 13px 0;
-    width: 32.7%;
+    width: 29.8%;
     background:#AC915A;
     border: none;
     transition: .5s all;

@@ -33,7 +33,7 @@ export default function Login() {
         <div className="contact">
             <div className="container">
                 <div className="col-md-8 contact-left wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <h4>Login</h4>
+                    <h4>LogIn</h4>
                     <form onSubmit={onLoginHandler} method="POST">
                         <input type="email" id="email" name="email" placeholder="Email" />
                         <input type="password" id="password" name="password" placeholder="Password" />

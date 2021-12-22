@@ -8,7 +8,7 @@ export default function Header() {
     const userNavigation = (
         <>
             <li><Link to="/recipes/create">Create Recipe</Link></li>
-            <li><Link to="/user/${user._id}">My profile</Link></li>
+            <li><Link to="/user/{user._id}">My profile</Link></li>
             <li><Link to="/logout">Log Out</Link></li>
         </>
     );
