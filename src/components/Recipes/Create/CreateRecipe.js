@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
 import * as recipeService from '../../../services/recipeService';
+import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 
 export default function CreateRecipe() {
     const navigate = useNavigate();
+    const { addNotification } = useNotificationContext();
 
     const onCreateHandler = (e) => {
         e.preventDefault();
@@ -14,11 +16,10 @@ export default function CreateRecipe() {
         if (!Object.values(recipeData).some(x => !x)) {
             recipeService.create(recipeData)
                 .then((recipe) => {
-                    console.log(recipe);
                     navigate('/recipes');
                 });
         } else {
-            //todo notification
+            addNotification('All fields must be filled.')
         }
 
     };

@@ -1,22 +1,35 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
+import { useAuthContext } from '../../../contexts/AuthContext';
+import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 import * as recipeService from '../../../services/recipeService';
 
 export default function EditRecipe() {
     let [recipe, setRecipe] = useState([]);
     const navigate = useNavigate();
     const { id } = useParams();
+    const { user } = useAuthContext();
+    const { addNotification } = useNotificationContext();
 
     useEffect(() => {
         recipeService.getOne(id)
             .then(recipe => {
-                if (recipe) {
-                    setRecipe(recipe);
+                if (recipe.message) {
+                    addNotification('Something went wrong. Recipe not found')
+                    navigate('/recipes')
+                } else {
+                    if (recipe._ownerId == user._id) {
+                        setRecipe(recipe);
+                    } else {
+                        addNotification('You\'re not owner of this recipe')
+                        navigate('/recipes')
+                    }
+                    
                 }
             })
             .catch(err => {
-                //todo notify
+                addNotification(err)
                 console.log(err);
             })
     }, [id]);
@@ -34,7 +47,7 @@ export default function EditRecipe() {
                     navigate('/recipes');
                 });
         } else {
-            //todo notification
+            addNotification('All fields must be filled.')
         }
 
     };

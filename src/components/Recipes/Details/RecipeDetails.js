@@ -21,7 +21,7 @@ export default function RecipeDetails() {
                 if (recipe.message) {
                     addNotification('Something went wrong. Recipe not found')
                     navigate('/recipes')
-                }else {
+                } else {
                     setRecipe({ ...recipe });
                 }
             })
@@ -58,7 +58,7 @@ export default function RecipeDetails() {
                     likes = likes.map(x => x.userId);
                     console.log(likes);
                     setRecipe(recipe => ({ ...recipe, likes }));
-                   
+
                 }
             })
     }, [likeButtonClick]);
@@ -71,10 +71,11 @@ export default function RecipeDetails() {
         recipeService.del(id)
             .then(() => {
                 navigate('/recipes');
-            })
+            });
+
     };
 
-   
+
 
     return (
         <div className="single">
