@@ -6,7 +6,7 @@ made by Angelina Yakimova
 #### Implemented CRUD operations for Users, Recipes and Likes
 
 ### Start Application - start script
-```
+```javascript
 npm i
 npm start
 ```
@@ -16,7 +16,7 @@ npm run server
 ```
 
 ## Routes
-> #### /  Home Component
+#### /  Home Component
 #### **/recipes**  Recipes Component
 #### **/recipes/id/details**  Details Component
 #### &emsp; **/recipes/create**  Create Component
