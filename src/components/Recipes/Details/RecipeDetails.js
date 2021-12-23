@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 import { useAuthContext } from '../../../contexts/AuthContext';
+import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 import * as recipeService from '../../../services/recipeService';
 import * as likeService from '../../../services/likeService';
 import * as utils from '../../../utils/utils';
@@ -11,19 +12,22 @@ export default function RecipeDetails() {
     let [recipe, setRecipe] = useState([]);
     const { id } = useParams();
     const { user } = useAuthContext();
+    const { addNotification } = useNotificationContext();
 
 
     useEffect(() => {
         recipeService.getOne(id)
             .then(recipe => {
                 if (recipe.message) {
-                    throw (recipe.message);
+                    addNotification('Something went wrong. Recipe not found')
+                    navigate('/recipes')
                 }else {
                     setRecipe({ ...recipe });
                 }
             })
             .catch(err => {
-                //todo notify
+                addNotification('Something went wrong. Recipe not found');
+                navigate('/recipes')
                 console.log(err);
             })
     }, [id]);
@@ -34,17 +38,17 @@ export default function RecipeDetails() {
         }
 
         if (recipe.likes.includes(user._id)) {
-            // addNotification('You cannot like again')
+            addNotification('You cannot like again')
             return;
         }
 
         likeService.like(user._id, id)
             .then((like) => {
                 setRecipe(state => ({ ...state, likes: [...state.likes, user._id] }));
-                // addNotification('Successfuly liked a cat :)', types.success);
+                addNotification('Successfuly liked recipe)', types.success);
             });
     };
-    
+
     useEffect(() => {
         likeService.getRecipeLikes(id)
             .then(likes => {

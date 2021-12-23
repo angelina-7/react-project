@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
 import { useAuthContext } from '../../contexts/AuthContext';
+import { useNotificationContext, types } from '../../contexts/NotificationContext';
 import * as authService from '../../services/authService'
 
 export default function Register() {
     const { register } = useAuthContext();
+    const { addNotification } = useNotificationContext();
     const navigate = useNavigate();
 
     const onRegisterHandler = (e) => {
@@ -16,21 +18,30 @@ export default function Register() {
         let password = formData.get('password');
         let rePassword = formData.get('rePassword');
 
+        const regex = new RegExp(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/);
         if (password == rePassword) {
-            authService.register(email, password)
-            .then((authData) => {
-                let data = {_id: authData._id, email: authData.email, accessToken: authData.accessToken};
-                register(data);
-                navigate('/');
-            })
-            .catch(err => {
-                // TODO: show notification
-                console.log(err);
-            });
+            if (regex.test(email)) {
+                authService.register(email, password)
+                    .then((authData) => {
+                        if (authData.message) {
+                            addNotification('Unsuccessful register, please try again');
+                        } else {
+                            let data = { _id: authData._id, email: authData.email, accessToken: authData.accessToken };
+                            register(data);
+                            navigate('/');
+                        }
+                    })
+                    .catch(err => {
+                        addNotification(err);
+                        console.log(err);
+                    });
+            } else {
+                addNotification('Email should be in format: peter@abv.bg')
+            }
         } else {
-            // TODO: show notification
+            addNotification('Passwords dont match');
         }
-       
+
 
     }
 
