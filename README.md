@@ -6,7 +6,7 @@ made by Angelina Yakimova
 #### Implemented CRUD operations for Users, Recipes and Likes
 
 ### Start Application - start script
-```javascript
+```
 npm i
 npm start
 ```
@@ -34,12 +34,12 @@ npm run server
 ### AuthContext 
 Global context that stores state of user information.
 To have acces to user data stored you can use the hook.
-```
+```javascript
 const { user, login, register, logout, isAuthenticated } = useAuthContext();
 ```
 ### LocalStorage hook
 Stores the state to Local Storage.
-```
+```javascript
 const [state, setstate] = useLocalStorage(key, initialState);
 ```
 ### Services
