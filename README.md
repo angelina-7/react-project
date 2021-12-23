@@ -1,10 +1,48 @@
 # Recipes App with React.js
 made by Angelina Yakimova
 
-### Home
+### Used API - [Softuni practice server](https://github.com/softuni-practice-server/softuni-practice-server)
 
-### All Recipes
+#### Implemented CRUD operations for Users, Recipes and Likes
 
-### Login/Register
+### Start Application - start script
+```
+npm i
+npm start
+```
+Can't work without the server though.
+```
+npm run server
+```
 
-### User Profile
+## Routes
+### / &emsp; | Home Component
+### /recipes &emsp; | Recipes Component
+### /recipes/id/details &emsp; | Details Component
+### &emsp; /recipes/create &emsp; | Create Component
+### &emsp; /recipes/id/edit &emsp; | Edit Component
+#### &emsp; Delete Functionality
+#### &emsp; Like Functionality
+&emsp;Create Edit Delete and Like are operetions that can be performed only by users or creators of the resource.
+
+### /users/id &emsp; | UserProfile Component
+&ensp;Shows user's own recipes.
+- [ ] Implement showing liked recipes
+- [ ] Change user credentials
+
+## Code Specifications
+### AuthContext 
+Global context that stores state of user information.
+To have acces to user data stored you can use the hook.
+```javascript
+const { user, login, register, logout, isAuthenticated } = useAuthContext();
+```
+### LocalStorage hook
+Stores the state to Local Storage.
+```javascript
+const [state, setstate] = useLocalStorage(key, initialState);
+```
+### Services
+#### Requester 
+Handles fetch requests to API. Automatically attaches token if available.
+
