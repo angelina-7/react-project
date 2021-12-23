@@ -1,10 +1,7 @@
 # Recipes App with React.js
 made by Angelina Yakimova
 
-### Home
+### Used API - Softuni practice server[https://github.com/softuni-practice-server/softuni-practice-server]
 
-### All Recipes
+### Implemented CRUD operations for Users, Recipes and Likes
 
-### Login/Register
-
-### User Profile
