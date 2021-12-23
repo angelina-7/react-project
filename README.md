@@ -16,7 +16,9 @@ npm run server
 ```
 
 ## Routes
-### /  #### Home Component
+### /  
+***
+Home Component
 #### **/recipes**  Recipes Component
 #### **/recipes/id/details**  Details Component
 #### &emsp; **/recipes/create**  Create Component
