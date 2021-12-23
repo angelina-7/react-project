@@ -3,11 +3,14 @@ import { useEffect, useState } from "react";
 
 import * as recipeService from '../../services/recipeService';
 
+import { useNotificationContext, types } from '../../contexts/NotificationContext';
+
 import Recipes from './Recipes/Recipes';
 import Home from './Home/Home';
 
 export default function RecipesRoot() {
     let [recipes, setRecipes] = useState([]);
+    const { addNotification } = useNotificationContext();
 
     useEffect(() => {
         recipeService.getAll()
@@ -19,7 +22,7 @@ export default function RecipesRoot() {
                 }
             })
             .catch(err => {
-                //todo notify
+                addNotification('Something went wrong. Recipes not found')
                 console.log(err);
             })
     }, []);

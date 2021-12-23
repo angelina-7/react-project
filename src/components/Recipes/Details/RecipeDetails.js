@@ -45,7 +45,7 @@ export default function RecipeDetails() {
         likeService.like(user._id, id)
             .then((like) => {
                 setRecipe(state => ({ ...state, likes: [...state.likes, user._id] }));
-                addNotification('Successfuly liked recipe)', types.success);
+                addNotification('Successfuly liked recipe', types.success);
             });
     };
 

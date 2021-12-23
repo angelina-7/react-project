@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import * as recipeService from '../../../services/recipeService';
 import HomeRecipeCard from "./HomeRecipeCard";
 
-export default function Home({recipes}) {
+export default function Home({ recipes }) {
     return (
         <>
             <div className="banner">
@@ -16,7 +14,9 @@ export default function Home({recipes}) {
                         </h1>
                         <div className="banner-info1" >
                             <ul className="banner-info1-list">
-                                {recipes?.slice(0,3).map(x => <HomeRecipeCard key={x._id} _id={x._id} imageUrl={x.imageUrl} title={x.title} />)}
+                                {recipes
+                                    ? recipes.slice(0, 3).map(x => <HomeRecipeCard key={x._id} _id={x._id} imageUrl={x.imageUrl} title={x.title} />)
+                                    : <div>No recipes to show</div>}
                             </ul>
 
                             <div className="more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
