@@ -17,15 +17,15 @@ npm run server
 
 ## Routes
 ### / &emsp; Home Component
-#### /recipes &emsp; Recipes Component
-#### /recipes/id/details &emsp; Details Component
-#### &emsp; /recipes/create &emsp; Create Component
-#### &emsp; /recipes/id/edit &emsp; Edit Component
+### /recipes &emsp; Recipes Component
+### /recipes/id/details &emsp; Details Component
+### &emsp; /recipes/create &emsp; Create Component
+### &emsp; /recipes/id/edit &emsp; Edit Component
 #### &emsp; Delete Functionality
 #### &emsp; Like Functionality
 &emsp;Create Edit Delete and Like are operetions that can be performed only by users or creators of the resource.
 
-#### /users/id &emsp; UserProfile Component
+### /users/id &emsp; UserProfile Component
 &ensp;Shows user's own recipes.
 - [ ] Implement showing liked recipes
 - [ ] Change user credentials
