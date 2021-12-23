@@ -19,10 +19,10 @@ npm run server
 #### **/**  Home Component
 #### **/recipes**  Recipes Component
 #### **/recipes/id/details**  Details Component
-#### &ensp; **/recipes/create**  Create Component
-#### &ensp; **/recipes/id/edit**  Edit Component
-#### &ensp; Delete Functionality
-#### &ensp; Like Functionality
+#### &emsp; **/recipes/create**  Create Component
+#### &emsp; **/recipes/id/edit**  Edit Component
+#### &emsp; Delete Functionality
+#### &emsp; Like Functionality
 &emsp;Create Edit Delete and Like are operetions that can be performed only by users or creators of the resource.
 
 #### **/users/id**  UserProfile Component
