@@ -905,6 +905,12 @@ ul.last1 li{
 .dropdown-menu {
     top: 155%;
 }
+.col-md-4{
+    height: 320px;
+}
+.col-md-4.event-grid{
+    height: 580px;
+}
 .service-grd{
 	position:relative;
 }

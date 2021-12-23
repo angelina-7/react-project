@@ -23,13 +23,6 @@ export default function CreateRecipe() {
 
     };
 
-    // title,
-    // imageUrl,
-    // info,
-    // description,
-    // ingredients,
-    // instructions
-
     return (
         <div className="contact">
             <div className="container">

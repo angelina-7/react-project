@@ -12,7 +12,9 @@ export default function RecipesRoot() {
     useEffect(() => {
         recipeService.getAll()
             .then(recipes => {
-                if (recipes) {
+                if (recipes.message) {
+                    throw ('Unsucssessful fetch');
+                }else {
                     setRecipes(recipes);
                 }
             })

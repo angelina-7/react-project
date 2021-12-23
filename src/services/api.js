@@ -5,5 +5,5 @@ export const REGISTER = `${BASE_URL}/users/register`;
 export const LOGOUT = `${BASE_URL}/users/logout`;
 
 export const RECIPES = `${BASE_URL}/data/recipes`; 
-export const LIKED = `${BASE_URL}/data/user-recipes`; 
+export const LIKES = `${BASE_URL}/data/likes`; 
 

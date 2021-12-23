@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 import { useAuthContext } from '../../../contexts/AuthContext';
 import * as recipeService from '../../../services/recipeService';
+import * as likeService from '../../../services/likeService';
+import * as utils from '../../../utils/utils';
 
 export default function RecipeDetails() {
     let navigate = useNavigate();
@@ -10,11 +12,14 @@ export default function RecipeDetails() {
     const { id } = useParams();
     const { user } = useAuthContext();
 
+
     useEffect(() => {
         recipeService.getOne(id)
             .then(recipe => {
-                if (recipe) {
-                    setRecipe(recipe);
+                if (recipe.message) {
+                    throw (recipe.message);
+                }else {
+                    setRecipe({ ...recipe });
                 }
             })
             .catch(err => {
@@ -22,6 +27,39 @@ export default function RecipeDetails() {
                 console.log(err);
             })
     }, [id]);
+
+    const likeButtonClick = () => {
+        if (user._id === recipe._ownerId) {
+            return;
+        }
+
+        if (recipe.likes.includes(user._id)) {
+            // addNotification('You cannot like again')
+            return;
+        }
+
+        likeService.like(user._id, id)
+            .then((like) => {
+                setRecipe(state => ({ ...state, likes: [...state.likes, user._id] }));
+                // addNotification('Successfuly liked a cat :)', types.success);
+            });
+    };
+    
+    useEffect(() => {
+        likeService.getRecipeLikes(id)
+            .then(likes => {
+                if (likes.message) {
+                    setRecipe(recipe => ({ ...recipe, likes: [] }));
+                } else {
+                    likes = likes.map(x => x.userId);
+                    console.log(likes);
+                    setRecipe(recipe => ({ ...recipe, likes }));
+                   
+                }
+            })
+    }, [likeButtonClick]);
+
+    let date = utils.parseDate(recipe._createdOn);
 
     const onDeleteHandler = (e) => {
         e.preventDefault();
@@ -32,17 +70,16 @@ export default function RecipeDetails() {
             })
     };
 
-
-    let date = parseDate(recipe._createdOn);
+   
 
     return (
-        <div class="single">
+        <div className="single">
             <div className="container">
                 <h1>
                     {recipe.title}
                 </h1>
                 <div className="single-left">
-                    <p>Published on <span>{ }</span></p>
+                    <p>Published on <span>{date}</span></p>
                     <img src={recipe.imageUrl} alt=" " className="img-responsive" />
                 </div>
                 <div className="single-right">
@@ -54,13 +91,13 @@ export default function RecipeDetails() {
                                 <a href="#" className="label label-info" onClick={onDeleteHandler}>Delete</a>
                             </h4>
                             : <div>
-                                <Link className="icon-link round like" to="#"></Link><span>Like</span>
+                                <Link className="icon-link round like" to="#" onClick={likeButtonClick}></Link><span>Likes {recipe.likes?.length}</span>
                             </div>
                         )}
 
 
                     </div>
-                    <p>
+                    <div>
                         <span>
                             {recipe.description}
                         </span>
@@ -69,19 +106,14 @@ export default function RecipeDetails() {
                         <span>
                             {recipe.ingredients}
                         </span>
-                    </p>
+                    </div>
                 </div>
                 <div className="clearfix"></div>
-                <p className="tortor">
+                <div className="tortor">
                     <h3>Instructions</h3>
                     {recipe.instructions}
-                </p>
+                </div>
             </div>
         </div>
     );
-}
-
-
-const parseDate = (date) => {
-    return new Date(date).toString().substring(4, 15);
 }

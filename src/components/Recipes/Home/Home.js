@@ -16,7 +16,7 @@ export default function Home({recipes}) {
                         </h1>
                         <div className="banner-info1" >
                             <ul className="banner-info1-list">
-                                {recipes.slice(0,3).map(x => <HomeRecipeCard key={x._id} _id={x._id} imageUrl={x.imageUrl} title={x.title} />)}
+                                {recipes?.slice(0,3).map(x => <HomeRecipeCard key={x._id} _id={x._id} imageUrl={x.imageUrl} title={x.title} />)}
                             </ul>
 
                             <div className="more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">

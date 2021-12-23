@@ -7,7 +7,7 @@ export default function RecipeCard({
 
     return (
         <div className="col-md-4 event-grid">
-            <p class="dte">{date}</p>
+            <p className="dte">{date}</p>
             <img src={children.imageUrl} alt=" " className="img-responsive" />
             <div className="nobis">
                 <Link to={`/recipes/${children._id}/details`}>{children.title}<span>{children.info}</span></Link>

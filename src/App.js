@@ -14,36 +14,44 @@ import Logout from './components/User/Logout';
 import CreateRecipe from './components/Recipes/Create/CreateRecipe';
 import UserProfile from './components/User/UserProfile';
 import EditRecipe from './components/Recipes/Edit/EditRecipe';
+import GuardedRoute from './components/Common/GuardedRoute';
+import ErrorBoundary from './components/Common/ErrorBoundary';
 
 function App() {
     return (
-        <AuthProvider>
-            <div>
-                <Header />
+        <ErrorBoundary>
+            <AuthProvider>
+                <div>
+                    <Header />
 
-                <main>
-                    <Routes>
-                        <Route path="/*" element={<RecipesRoot />} />
-                        {/* <Route path="/recipes" element={<RecipesRoot />} /> */}
+                    <main>
+                        <Routes>
+                            <Route path="/*" element={<RecipesRoot />} />
+                            {/* <Route path="/recipes" element={<RecipesRoot />} /> */}
 
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
 
-                        <Route path="/user/:userId" element={<UserProfile />} />
-                        <Route path="/logout" element={<Logout />} />
-                        <Route path="/recipes/create" element={<CreateRecipe />} />
-                        <Route path="/recipes/:id/details" element={<RecipeDetails />} />
-                        <Route path="/recipes/:id/like" element={<RecipeDetails />} />
-
-                        <Route path="/recipes/:id/edit" element={<EditRecipe />} />
-
-                    </Routes>
-                </main>
+                            <Route path="/recipes/:id/details" element={<RecipeDetails />} />
 
 
-                <Footer />
-            </div>
-        </AuthProvider>
+                            <Route element={<GuardedRoute />}>
+                                <Route path="/recipes/:id/edit" element={<EditRecipe />} />
+                                <Route path="/user/:userId" element={<UserProfile />} />
+                                <Route path="/logout" element={<Logout />} />
+
+                                <Route path="/recipes/:id/like" element={<RecipeDetails />} />
+                                <Route path="/recipes/create" element={<CreateRecipe />} />
+                            </Route>
+
+                        </Routes>
+                    </main>
+
+
+                    <Footer />
+                </div>
+            </AuthProvider>
+        </ErrorBoundary>
     );
 }
 

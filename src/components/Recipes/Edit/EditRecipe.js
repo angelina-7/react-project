@@ -8,7 +8,7 @@ export default function EditRecipe() {
     const navigate = useNavigate();
     const { id } = useParams();
 
-    useEffect((id) => {
+    useEffect(() => {
         recipeService.getOne(id)
             .then(recipe => {
                 if (recipe) {
@@ -19,7 +19,7 @@ export default function EditRecipe() {
                 //todo notify
                 console.log(err);
             })
-    }, []);
+    }, [id]);
 
     const onEditHandler = (e) => {
         e.preventDefault();
